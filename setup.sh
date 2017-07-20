@@ -17,6 +17,8 @@ if [ ! -d ~/.rbenv/ ]; then
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 chsh -s $(which zsh)
 
 echo "Finished!"

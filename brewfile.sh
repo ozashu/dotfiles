@@ -21,6 +21,9 @@ brew install wget
 brew install tree
 brew install nmap
 
+## python3
+brew install python3
+
 #font
 brew tap sanemat/font
 

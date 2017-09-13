@@ -8,6 +8,7 @@ do
 ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
+mkdir -p $HOME/go
 mkdir -p $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 git clone https://github.com/Shougo/dein.vim.git $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
 

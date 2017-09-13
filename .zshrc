@@ -5,6 +5,9 @@ export PATH=$PATH:$HOME/go
 export PATH=$PATH:$GOROOT/bin
 export GOROOT=$HOME/go
 export GOPATH=$HOME
+export PATH=$PATH:~/Downloads/nand2tetris/tools
+
+eval "$(rbenv init -)"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -47,3 +50,4 @@ alias trl='tr "A-Z" "a-z"'
 alias tru='tr "a-z" "A-Z"'
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 alias s='ssh s'
+alias irb='irb --simple-prompt'

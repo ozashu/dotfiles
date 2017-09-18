@@ -44,6 +44,8 @@ set backspace=indent,eol,start
 set foldmethod=marker
 " 常にコマンドを表示
 set showcmd
+" ヤンクをクリップボードに保持
+set clipboard+=unnamed
 
 "+--------------+
 "| Key mappings |

@@ -41,3 +41,6 @@ brew cask install skype
 
 #remove dust
 brew cleanup
+
+#tmux enable copy-paste on Vim
+brew install reattach-to-user-namespace

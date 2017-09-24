@@ -6,6 +6,7 @@ brew upgrade
 
 #shell
 brew install zsh
+brew install coreutils
 
 #git
 brew install git

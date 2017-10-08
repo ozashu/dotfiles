@@ -12,6 +12,9 @@ brew install coreutils
 brew install git
 brew install git-flow
 
+# node.js
+brew install node.js
+
 #tools
 brew install tmux
 brew install nkf

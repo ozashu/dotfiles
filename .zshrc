@@ -14,6 +14,8 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="mm/dd/yyyy"
 
+autoload -Uz vcs_info
+autoload -U compinit && compinit
 autoload -U colors;colors
 
 PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b]'
@@ -26,8 +28,13 @@ export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43
 
 # 補完候補もLS_COLORSに合わせて色が付くようにする
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# 大文字と小文字を同一視して補完
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# フルパスの時でも今のディレクトリを外す場合の設定
+zstyle ':completion:*' ignore-parents parent pwd ..
+zstyle ':completion:*:processes' command 'ps x -o pid,args'
 
-
+# alias
 alias d='cd'
 alias ..='cd ..'
 alias ls='ls -F -G'

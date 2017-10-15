@@ -3,7 +3,7 @@ export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:$HOME/go
 export PATH=$PATH:$GOROOT/bin
-export GOROOT=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME
 export PATH=$PATH:~/Downloads/nand2tetris/tools
 

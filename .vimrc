@@ -115,7 +115,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " Esc2回で検索のハイライトを消す
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+" ツリーと編集領域を移動する
+" nnoremap <C-t> <C-w>w
 "+----------------+
 "| Color settings |
 "+----------------+
@@ -131,10 +133,17 @@ set t_Co=256
 "+----------------+
 
 " autocmd VimEnter * execute 'NERDTree'
-
-"+--------------------+
+" 不可視ファイルを表示する
+let NERDTreeShowHidden = 1
+" コーナーを + に変更
+let g:table_mode_corner_corner='+'
+" ヘッダーの次の区切りを = にする
+let g:table_mode_header_fillchar='='
+" terraform
+let g:terraform_align=1
+"|--------------------|
 "| File type settings |
-"+--------------------+
+"|--------------------|
 
 
 "+--------------------+

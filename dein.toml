@@ -236,3 +236,7 @@ hook_add = ''' " {{{
     " Space+ffでカレントバッファのディレクトリを開く
     noremap <silent> [unite]ff :<C-u>VimFilerBufferDir<CR>
 ''' # }}}
+
+[[plugins]]
+# テーブルを書いてくれる 
+repo = 'dhruvasagar/vim-table-mode'

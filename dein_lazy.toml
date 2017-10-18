@@ -19,6 +19,11 @@ repo = 'ap/vim-css-color'
 on_ft = ['css', 'less', 'sass']
 
 [[plugins]]
+# CSSのシンタックスハイライト
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css', 'less', 'sass']
+
+[[plugins]]
 # JavaScriptのインデンテーション
 repo = 'pangloss/vim-javascript'
 on_ft = ['javascript']
@@ -130,3 +135,42 @@ on_ft = 'python'
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
+[[plugins]]
+# Pythonのシンタックスハイライト
+repo = 'hdima/python-syntax'
+on_ft = 'python'
+
+[[plugins]]
+# Pythonのシンタックスハイライト
+repo = 'hdima/python-syntax'
+on_ft = 'python'
+
+[[plugins]]
+# Nginxのシンタックスハイライト
+repo = 'chr4/nginx.vim'
+on_ft = 'nginx'
+
+[[plugins]]
+# Itamaeのス二ペット
+repo = 'tacahilo/itamae-snippets'
+on_ft = 'itamae'
+[[plugins]]
+# ServerSpecのスニペット
+repo = 'glidenote/serverspec-snippets.git'
+on_ft = 'serverspec'
+[[plugins]]
+# Cのコード整形
+repo = 'rhysd/vim-clang-format'
+on_ft = 'clang'
+[[plugins]]
+# Cの補完
+repo = 'justmao945/vim-clang'
+on_ft = 'clang'
+[[plugins]]
+# Terraformのコード整形
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
+[[plugins]]
+# fluentdのシンタックスハイライト
+repo = 'yoppi/fluentd.vim'
+on_ft = 'fluentd'

@@ -119,3 +119,14 @@ on_ft = ['toml']
 # YAMLのシンタックスハイライト
 repo = 'chase/vim-ansible-yaml'
 on_ft = ['yaml']
+
+[[plugins]]
+# Pythonのシンタックスチェック
+repo = 'nvie/vim-flake8'
+on_ft = 'python'
+
+[[plugins]]
+# Pythonのコード補完
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+

@@ -6,6 +6,8 @@ export PATH=$PATH:$GOROOT/bin
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME
 export PATH=$PATH:~/Downloads/nand2tetris/tools
+export LESSCHARSET=utf-8
+export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
 
 eval "$(rbenv init -)"
 

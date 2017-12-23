@@ -1,3 +1,7 @@
 [user]
 	name = ozawa shuhei
 	email = ozawa@heartbeats.jp
+[core]
+	editor = vim
+	pager = less --RAW-CONTROL-CHARS --quit-if-one-screen
+	quotepath = false

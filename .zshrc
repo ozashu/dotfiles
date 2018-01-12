@@ -1,11 +1,10 @@
 export LANG=ja_JP.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH=$PATH:$HOME/go
-export PATH=$PATH:$GOROOT/bin
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME
 export PATH=$PATH:~/Downloads/nand2tetris/tools
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
 export LESSCHARSET=utf-8
 export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
 
@@ -39,6 +38,7 @@ zstyle ':completion:*:processes' command 'ps x -o pid,args'
 # alias
 alias d='cd'
 alias ..='cd ..'
+
 alias ls='ls -F -G'
 alias la='ls -a'
 alias ll='ls -l'

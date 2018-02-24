@@ -55,9 +55,29 @@ hook_add = ''' " {{{
 # 非同期でコードチェック
 repo = 'w0rp/ale.git'
 on_source = ['lightline.vim']
-hook_add = '''
+hook_add = ''' " {{{
   let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
+  let g:ale_linters = {
+  \   'python': ['flake8', 'pylint'],
+  \}
+  let g:ale_sign_column_always = 0
+  let g:ale_set_highlights = 0
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_sign_error = 'E'
+  let g:ale_sign_warning = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s'
+  let g:ale_set_loclist = 1
+  let g:ale_set_quickfix = 0
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_text_changed = 0
+  let g:ale_lint_on_save = 1
+  let g:ale_fix_on_save = 0
+  let g:ale_open_list = 1
+  let g:ale_keep_list_window_open = 0
 
+  let g:ale_python_pylint_options='--max-line-length=120'
+''' # }}}
 [[plugins]]
 # CoffeeScriptのシンタックスハイライト
 repo = 'kchmck/vim-coffee-script'
@@ -164,6 +184,11 @@ on_ft = 'python'
 # Pythonのコード補完
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
+hook_add = ''' " {{{
+  let g:jedi#auto_initialization = 1
+  let g:jedi#auto_vim_configuration = 0
+  let g:jedi#popup_select_first = 0
+''' # }}}
 
 [[plugins]]
 # Pythonのシンタックスハイライト

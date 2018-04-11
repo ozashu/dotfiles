@@ -14,6 +14,7 @@ brew install git-flow
 
 # node.js
 brew install node.js
+brew install yarn
 
 #tools
 brew install tmux

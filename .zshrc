@@ -1,6 +1,6 @@
 export LANG=ja_JP.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:~/Downloads/nand2tetris/tools
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin

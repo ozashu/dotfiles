@@ -143,6 +143,11 @@ hook_source = ''' " {{{
     augroup END
 ''' # }}}
 
+[[plugin]]
+# Go言語補完
+repo = 'mdempsky/gocode'
+on_ft = ['go']
+
 [[plugins]]
 # Rustのシンタックスハイライト
 repo = 'rust-lang/rust.vim'

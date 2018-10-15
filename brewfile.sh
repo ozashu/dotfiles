@@ -64,3 +64,7 @@ brew cleanup
 
 #tmux enable copy-paste on Vim
 brew install reattach-to-user-namespace
+
+# tfenv and direnv
+brew install direnv
+brew install tfenv

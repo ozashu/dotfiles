@@ -1,7 +1,14 @@
 [user]
-	name = ozawa shuhei
-	email = ozawa@heartbeats.jp
+	name = Ozawa Shuhei
+	email = ozawa_shuhei@cyberagent.co.jp
 [core]
 	editor = vim
 	pager = less --RAW-CONTROL-CHARS --quit-if-one-screen
 	quotepath = false
+[color]
+	ui = true
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit

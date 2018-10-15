@@ -10,6 +10,7 @@ export LESSCHARSET=utf-8
 export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
 
 eval "$(rbenv init -)"
+eval "$(direnv hook zsh)"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -116,3 +117,4 @@ route () {
   net_tools_deprecated_message
   echo 'Use `ip r`'
 }
+source ~/.bash_profile

@@ -43,7 +43,7 @@ brew cask install minikube
 
 # HashiCorp
 brew install packer
-brew install terraform
+brew install tfenv
 brew install consul
 
 ## Homebrew-cask
@@ -65,6 +65,5 @@ brew cleanup
 #tmux enable copy-paste on Vim
 brew install reattach-to-user-namespace
 
-# tfenv and direnv
+# direnv
 brew install direnv
-brew install tfenv

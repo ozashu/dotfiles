@@ -5,7 +5,7 @@ export PATH=$PATH:~/Downloads/nand2tetris/tools
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
-export PATH=$PATH:~/CAWORK/work/cycloud_Darwin_x86_64/
+export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
 export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
 

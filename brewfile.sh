@@ -67,3 +67,13 @@ brew install reattach-to-user-namespace
 
 # direnv
 brew install direnv
+
+# mackerel CUI
+brew tap mackerelio/mackerel-agent
+brew install mkr
+
+# axel
+brew install axel
+
+# imagemagick
+$ brew install imagemagick

@@ -40,6 +40,7 @@ brew install peco
 # k8s
 brew install kubectl
 brew cask install minikube
+brew install cfssl
 
 # HashiCorp
 brew install packer

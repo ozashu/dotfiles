@@ -2,12 +2,13 @@ export LANG=ja_JP.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:~/Downloads/nand2tetris/tools
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
 export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"

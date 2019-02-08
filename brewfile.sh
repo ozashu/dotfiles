@@ -41,6 +41,8 @@ brew install peco
 brew install kubectl
 brew cask install minikube
 brew install cfssl
+brew install kubectx
+brew tap derailed/k9s && brew install k9s
 
 # HashiCorp
 brew install packer

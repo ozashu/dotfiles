@@ -37,6 +37,9 @@ brew install go
 brew tap peco/peco
 brew install peco
 
+## fzf
+brew install fzf
+
 # k8s
 brew install kubectl
 brew cask install minikube

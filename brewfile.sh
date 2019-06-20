@@ -40,7 +40,7 @@ brew install peco
 ## fzf
 brew install fzf
 
-# k8s
+## k8s
 brew install kubectl
 brew cask install minikube
 brew install cfssl
@@ -48,10 +48,14 @@ brew install kubectx
 brew install stern
 brew tap derailed/k9s && brew install k9s
 
-# HashiCorp
+## HashiCorp
 brew install packer
 brew install tfenv
 brew install consul
+brew install terraform
+
+## pre-commit
+brew install pre-commit
 
 ## Homebrew-cask
 brew tap caskroom/cask

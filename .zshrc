@@ -5,6 +5,7 @@ export PATH=$PATH:~/Downloads/nand2tetris/tools
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=on
 export PATH=$PATH:~/google-cloud-sdk/bin
 export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
@@ -22,6 +23,9 @@ HIST_STAMPS="mm/dd/yyyy"
 autoload -Uz vcs_info
 autoload -U compinit && compinit
 autoload -U colors;colors
+
+# グロブ展開を防ぐ
+setopt nonomatch
 
 PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b]'
 PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
@@ -64,6 +68,13 @@ alias tru='tr "a-z" "A-Z"'
 alias socat='(){socat TCP-LISTEN:$1,,reuseaddr,fork EXEC:$2&}'
 alias irb='irb --simple-prompt'
 alias k='kubectl'
+alias ke='kubectl exec'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgpall='kubectl get pods --all-namespaces'
+alias kge='kubectl get events'
 
 # function
 function peco-select-history() {
@@ -78,6 +89,8 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^R' peco-select-history
 
+source <(kubectl completion zsh)
+source <(stern --completion=zsh)
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'

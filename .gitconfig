@@ -1,14 +1,43 @@
 [user]
-	name = Ozawa Shuhei
-	email = ozawa_shuhei@cyberagent.co.jp
+    name = Ozawa Shuhei
+    email = ozawa_shuhei@cyberagent.co.jp
 [core]
-	editor = vim
-	pager = less --RAW-CONTROL-CHARS --quit-if-one-screen
-	quotepath = false
+    editor = vim
+    pager = less --RAW-CONTROL-CHARS --quit-if-one-screen
+    quotepath = false
 [color]
-	ui = true
+    ui = true
+    interactive = auto
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[branch "master"]
+    rebase = true
+[branch]
+    autosetuprebase = always
 [alias]
-	co = checkout
-	st = status
-	br = branch
-	ci = commit
+    co = checkout
+    st = status
+    br = branch
+    ci = commit
+    reh = reset --hard
+    reho = reset --hard remotes/origin/HEAD
+    l  =  log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[url "git@ghe.ca-tools.org:"]
+    insteadOf = https://ghe.ca-tools.org/

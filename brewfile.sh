@@ -37,6 +37,9 @@ brew install go
 brew tap peco/peco
 brew install peco
 
+## go
+brew install ghq
+
 ## fzf
 brew install fzf
 
@@ -47,6 +50,9 @@ brew install cfssl
 brew install kubectx
 brew install stern
 brew tap derailed/k9s && brew install k9s
+brew install txn2/tap/kubefwd
+brew install kube-ps1
+brew install aylei/tap/kubectl-debug
 
 ## HashiCorp
 brew install packer
@@ -87,4 +93,16 @@ brew install mkr
 brew install axel
 
 # imagemagick
-$ brew install imagemagick
+brew install imagemagick
+
+# protobuf
+brew install protobuf
+
+# grpc
+brew install grpcurl
+
+# kubesec
+brew install shyiko/kubesec/kubesec
+
+# bloomrpc
+brew cask install bloomrpc

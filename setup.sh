@@ -23,6 +23,12 @@ if [ ! -d ~/.rbenv/ ]; then
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
+if [ ! -d ~/dotfiles/.tmux ]; then
+    mkdir -p ~/dotfiles/.tmux
+    cd ~/dotfiles/.tmux
+    wget https://raw.githubusercontent.com/jonmosco/kube-tmux/master/kube.tmux
+fi
+
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 chsh -s $(which zsh)

@@ -91,6 +91,21 @@ bindkey '^R' peco-select-history
 
 source <(kubectl completion zsh)
 source <(stern --completion=zsh)
+# dogleash
+source <(dogleash --completion=zsh)
+
+
+# vscode
+function code {
+    if [[ $# = 0 ]]
+    then
+        open -a "Visual Studio Code"
+    else
+        local argPath="$1"
+        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
+        open -a "Visual Studio Code" "$argPath"
+    fi
+}
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'

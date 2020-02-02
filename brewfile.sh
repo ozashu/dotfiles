@@ -106,3 +106,6 @@ brew install shyiko/kubesec/kubesec
 
 # bloomrpc
 brew cask install bloomrpc
+
+# Azure CLI
+brew install azure-cli

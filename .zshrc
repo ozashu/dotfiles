@@ -92,7 +92,11 @@ bindkey '^R' peco-select-history
 source <(kubectl completion zsh)
 source <(stern --completion=zsh)
 # dogleash
-source <(dogleash --completion=zsh)
+#dogleash completion zsh > /usr/local/share/zsh/site-functions/_dogleash
+#if [ $commands[dogleash] ]; then
+#  source <(dogleash completion zsh)
+#fi
+#source <(dogleash completion zsh)
 
 
 # vscode
@@ -111,10 +115,10 @@ function code {
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 #export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+source ~/.bash_profile
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then source '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/s04503/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then source '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
-
-source ~/.bash_profile
+if [ -f '/Users/s04503/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/completion.zsh.inc'; fi

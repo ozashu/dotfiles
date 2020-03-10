@@ -109,3 +109,9 @@ brew cask install bloomrpc
 
 # Azure CLI
 brew install azure-cli
+
+# Google Cloud SDK
+brew cask install google-cloud-sdk
+
+# aws
+brew install aws-iam-authenticator

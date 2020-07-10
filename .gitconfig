@@ -41,3 +41,7 @@
     lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [url "git@ghe.ca-tools.org:"]
     insteadOf = https://ghe.ca-tools.org/
+[diff "sopsdiffer"]
+	textconv = sops -d
+[ghq]
+	root = $GOPATH/src

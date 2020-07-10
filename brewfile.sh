@@ -24,7 +24,9 @@ brew install w3m
 brew install curl
 brew install wget
 brew install tree
-brew install nmap
+brew install emap
+brew install sipcalc
+brew install sysbench
 
 ## python3
 brew install python3
@@ -43,6 +45,9 @@ brew install ghq
 ## fzf
 brew install fzf
 
+## yq
+brew install yq
+
 ## k8s
 brew install kubectl
 brew cask install minikube
@@ -53,6 +58,10 @@ brew tap derailed/k9s && brew install k9s
 brew install txn2/tap/kubefwd
 brew install kube-ps1
 brew install aylei/tap/kubectl-debug
+
+## eksctl
+brew tap weaveworks/tap
+brew install weaveworks/tap/eksctl
 
 ## HashiCorp
 brew install packer
@@ -115,3 +124,4 @@ brew cask install google-cloud-sdk
 
 # aws
 brew install aws-iam-authenticator
+brew install fujiwara/tap/kinesis-tailf

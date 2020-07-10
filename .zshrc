@@ -3,7 +3,7 @@ export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:~/Downloads/nand2tetris/tools
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
+export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 export PATH=$PATH:~/google-cloud-sdk/bin
@@ -11,6 +11,7 @@ export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
 export LESS='--no-init --shift 4 --LONG-PROMPT --RAW-CONTROL-CHARS --quit-if-one-screen'
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"
@@ -98,6 +99,17 @@ source <(stern --completion=zsh)
 #fi
 #source <(dogleash completion zsh)
 
+# paco-src
+bindkey '^]' peco-src
+function peco-src() {
+  local src=$(ghq list --full-path ¦ peco --query "$LBUFFER")
+  if [ -n "$src" ]; then
+      BUFFER="cd $src"
+      zle accept-line
+  fi
+  zle -R -c
+}
+zle -N peco-src
 
 # vscode
 function code {

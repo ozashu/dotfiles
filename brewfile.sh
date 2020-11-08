@@ -48,6 +48,9 @@ brew install fzf
 ## yq
 brew install yq
 
+## bat
+brew install bat
+
 ## k8s
 brew install kubectl
 brew cask install minikube

@@ -134,3 +134,4 @@ if [ -f '/Users/s04503/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/s04503/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"

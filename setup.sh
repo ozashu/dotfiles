@@ -23,6 +23,16 @@ if [ ! -d ~/.rbenv/ ]; then
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
+if [ ! -d ~/.config/anyenv/ ]; then
+    anyenv install --init
+    anyenv install nodenv
+    mkdir -p $(anyenv root)/plugins
+    git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+    mkdir -p "$(nodenv root)"/plugins
+    git clone https://github.com/nodenv/nodenv-default-packages.git "$(nodenv root)/plugins/nodenv-default-packages"
+    touch $(nodenv root)/default-packages
+fi
+
 if [ ! -d ~/dotfiles/.tmux ]; then
     mkdir -p ~/dotfiles/.tmux
     cd ~/dotfiles/.tmux

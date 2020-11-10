@@ -28,6 +28,9 @@ brew install emap
 brew install sipcalc
 brew install sysbench
 
+## anyenv
+brew install anyenv
+
 ## python3
 brew install python3
 

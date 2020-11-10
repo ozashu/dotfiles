@@ -14,6 +14,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 eval "$(rbenv init -)"
+eval "$(anyenv init -)"
 eval "$(direnv hook zsh)"
 
 HISTFILE=~/.zsh_history

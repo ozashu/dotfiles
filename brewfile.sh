@@ -64,6 +64,8 @@ brew tap derailed/k9s && brew install k9s
 brew install txn2/tap/kubefwd
 brew install kube-ps1
 brew install aylei/tap/kubectl-debug
+brew install helm
+brew install istioctl
 
 ## eksctl
 brew tap weaveworks/tap

@@ -31,6 +31,10 @@ if [ ! -d ~/.config/anyenv/ ]; then
     mkdir -p "$(nodenv root)"/plugins
     git clone https://github.com/nodenv/nodenv-default-packages.git "$(nodenv root)/plugins/nodenv-default-packages"
     touch $(nodenv root)/default-packages
+    echo yarn >> $(nodenv root)/default-packages
+    echo typescript >> $(nodenv root)/default-packages
+    echo ts-node >> $(nodenv root)/default-packages
+    echo typesync >> $(nodenv root)/default-packages
 fi
 
 if [ ! -d ~/dotfiles/.tmux ]; then

@@ -26,12 +26,36 @@ autoload -Uz vcs_info
 autoload -U compinit && compinit
 autoload -U colors;colors
 
+
+# git-promptの読み込み
+source ~/dotfiles/git-prompt.sh
+
+# git-completionの読み込み
+fpath=(~/.zsh $fpath)
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+autoload -Uz compinit && compinit
+
+
 # グロブ展開を防ぐ
 setopt nonomatch
+# プロンプトのオプション表示設定
+# PROMPT：左側に表示されるの通常のプロンプト
+# PROMPT2：2行以上のコマンドを入力する際に表示されるプロンプト
+# SPROMPT：コマンドを打ち間違えたときの「もしかして」プロンプト
+# RPROMPT：右側に表示されるプロンプト (入力が被ると自動的に消える)
 
-PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b]'
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
+
+PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%d%f%b %F{red}$(__git_ps1 "(%s)")%f]'
 PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r ? [n,y,a,e] %{${reset_color}%}"
+
+# プロンプトの表示設定(好きなようにカスタマイズ可)
+#setopt PROMPT_SUBST ; PS1='%F{green}%n@%m%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
+#\$ '
 
 # ls
 export LSCOLORS=gxfxcxdxbxegedabagacag
@@ -91,6 +115,7 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^R' peco-select-history
 
+# zsh 補完
 source <(kubectl completion zsh)
 source <(stern --completion=zsh)
 # dogleash

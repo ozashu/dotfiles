@@ -103,6 +103,7 @@ alias kg='kubectl get'
 alias kgp='kubectl get pods'
 alias kgpall='kubectl get pods --all-namespaces'
 alias kge='kubectl get events'
+alias gitls='git ls-files'
 
 # function
 function peco-select-history() {

@@ -31,10 +31,9 @@ autoload -U colors;colors
 source ~/dotfiles/git-prompt.sh
 
 # git-completionの読み込み
-fpath=(~/dotfiles $fpath)
-zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.bash
-autoload -Uz compinit && compinit
-
+#path=(~/dotfiles $fpath)
+#zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.bash
+#autoload -U compinit && compinit
 
 # グロブ展開を防ぐ
 setopt nonomatch

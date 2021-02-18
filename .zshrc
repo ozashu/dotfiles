@@ -31,13 +31,15 @@ autoload -U colors;colors
 source ~/dotfiles/git-prompt.sh
 
 # git-completionの読み込み
-fpath=(~/.zsh $fpath)
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/dotfiles $fpath)
+zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion.bash
 autoload -Uz compinit && compinit
 
 
 # グロブ展開を防ぐ
 setopt nonomatch
+# PROMPT変数内で変数参照する
+setopt prompt_subst
 # プロンプトのオプション表示設定
 # PROMPT：左側に表示されるの通常のプロンプト
 # PROMPT2：2行以上のコマンドを入力する際に表示されるプロンプト

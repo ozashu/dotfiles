@@ -6,6 +6,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
+export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:~/google-cloud-sdk/bin
 export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
@@ -154,7 +155,7 @@ function code {
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 #export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-source ~/.bash_profile
+#source ~/.bash_profile
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/s04503/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/path.zsh.inc'; fi

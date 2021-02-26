@@ -9,6 +9,7 @@ ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
 if [ ! -d ~/.vim/.cache/dein/ ]; then
+    mkdir -p ~/.vim
     mkdir -p ~/.vim/.cache/dein/
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
     sh ./installer.sh ~/.vim/.cache/dein/
@@ -43,7 +44,12 @@ if [ ! -d ~/dotfiles/.tmux ]; then
     wget https://raw.githubusercontent.com/jonmosco/kube-tmux/master/kube.tmux
 fi
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ ! -d /opt/homebrew ]; then
+    mkdir /opt/homebrew
+fi
+
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 chsh -s $(which zsh)
 

@@ -2,7 +2,7 @@ export LANG=ja_JP.UTF-8
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case'
 export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:~/Downloads/nand2tetris/tools
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/homebrew/bin
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on

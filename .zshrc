@@ -157,7 +157,7 @@ function code {
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 #export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-#source ~/.bash_profile
+source ~/.bash_profile
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/s04503/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/path.zsh.inc'; fi

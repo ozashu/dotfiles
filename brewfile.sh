@@ -59,7 +59,7 @@ brew install bat
 
 ## k8s
 brew install kubectl
-brew cask install minikube
+brew install minikube --cask
 brew install cfssl
 brew install kubectx
 brew install stern
@@ -69,6 +69,10 @@ brew install kube-ps1
 brew install aylei/tap/kubectl-debug
 brew install helm
 brew install istioctl
+
+## Telepresence
+brew install osxfuse --cask
+brew install datawire/blackbird/telepresence
 
 ## eksctl
 brew tap weaveworks/tap
@@ -85,14 +89,14 @@ brew install pre-commit
 
 ## Homebrew-cask
 brew tap caskroom/cask
-brew cask install adobe-reader
-brew cask install xquartz
-brew cask install skype
+brew install adobe-reader --cask
+brew install xquartz --cask
+brew install skype --cask
 
 ## Vagrant
-brew cask install virtualbox
-brew cask install vagrant
-brew cask install vagrant-manager
+brew install virtualbox --cask
+brew install vagrant --cask
+brew install vagrant-manager --cask
 vagrant plugin install vagrant-hostupdater
 vagrant plugin install vagrant-sshfs
 
@@ -125,13 +129,13 @@ brew install grpcurl
 brew install shyiko/kubesec/kubesec
 
 # bloomrpc
-brew cask install bloomrpc
+brew install bloomrpc --cask
 
 # Azure CLI
 brew install azure-cli
 
 # Google Cloud SDK
-brew cask install google-cloud-sdk
+brew install google-cloud-sdk --cask
 
 # aws
 brew install aws-iam-authenticator

@@ -70,10 +70,6 @@ brew install aylei/tap/kubectl-debug
 brew install helm
 brew install istioctl
 
-## Telepresence
-brew install osxfuse --cask
-brew install datawire/blackbird/telepresence
-
 ## eksctl
 brew tap weaveworks/tap
 brew install weaveworks/tap/eksctl

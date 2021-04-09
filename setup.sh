@@ -44,8 +44,14 @@ if [ ! -d ~/dotfiles/.tmux ]; then
     wget https://raw.githubusercontent.com/jonmosco/kube-tmux/master/kube.tmux
 fi
 
+
 if [ ! -d /opt/homebrew ]; then
     mkdir /opt/homebrew
+fi
+
+if [ ! -e /usr/local/bin/telepresence ]; then
+    sudo curl -fL https://app.getambassador.io/download/tel2/darwin/amd64/latest/telepresence -o /usr/local/bin/telepresence
+    sudo chmod a+x /usr/local/bin/telepresence
 fi
 
 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew

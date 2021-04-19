@@ -155,6 +155,9 @@ function code {
 }
 
 # krew
+result=0
+output=$(kubectl krew 2>&1 > /dev/null) || result=$?
+if [ ! "$result" = "0" ]; then
 (
   set -x; cd "$(mktemp -d)" &&
   OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
@@ -164,6 +167,7 @@ function code {
   KREW=./krew-"${OS}_${ARCH}" &&
   "$KREW" install krew
 )
+fi
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'

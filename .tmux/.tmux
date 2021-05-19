@@ -1,0 +1,1 @@
+/Users/s04503/dotfiles/.tmux

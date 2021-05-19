@@ -42,7 +42,6 @@ brew tap sanemat/font
 
 ## peco
 brew install go
-brew tap peco/peco
 brew install peco
 
 ## go
@@ -53,6 +52,9 @@ brew install fzf
 
 ## yq
 brew install yq
+
+## jq
+brew install jq
 
 ## bat
 brew install bat
@@ -88,6 +90,13 @@ brew tap caskroom/cask
 brew install adobe-reader --cask
 brew install xquartz --cask
 brew install skype --cask
+
+## Ricty font
+brew install --cask fontforge
+brew install ricty
+#To install Ricty:
+cp -f /opt/homebrew/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+fc-cache -vf
 
 ## Vagrant
 brew install virtualbox --cask

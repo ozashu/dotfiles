@@ -174,10 +174,16 @@ fi
 #export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 source ~/.bash_profile
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+PATH="/Users/s04503/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/s04503/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/s04503/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/s04503/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/s04503/perl5"; export PERL_MM_OPT;
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s04503/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/s04503/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/google-cloud-sdk/completion.zsh.inc'; fi
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc'; fi

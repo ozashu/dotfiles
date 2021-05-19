@@ -8,9 +8,9 @@ do
 ln -s $HOME/dotfiles/$file $HOME/$file
 done
 
-if [ ! -d ~/.vim/.cache/dein/ ]; then
-    mkdir -p ~/.vim
-    mkdir -p ~/.vim/.cache/dein/
+if [ ! -d ~/dotfiles/.vim/.cache/dein/ ]; then
+    mkdir -p ~/dotfiles/.vim
+    mkdir -p ~/dotfiles/.vim/.cache/dein/
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
     sh ./installer.sh ~/.vim/.cache/dein/
     rm -rf ./installer.sh

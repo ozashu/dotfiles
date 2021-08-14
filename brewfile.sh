@@ -34,9 +34,6 @@ brew install anyenv
 ## python3
 brew install python3
 
-## rust
-brew install rust
-
 #font
 brew tap sanemat/font
 

@@ -45,6 +45,11 @@ if [ ! -d ~/dotfiles/.tmux ]; then
 fi
 
 
+if [ ! -d $HOME/.cargo/bin ]; then
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+fi
+
+
 if [ ! -d /opt/homebrew ]; then
     mkdir /opt/homebrew
 fi

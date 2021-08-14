@@ -7,6 +7,8 @@ export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:~/google-cloud-sdk/bin
 export PATH=$PATH:~/CAWORK/01_work/cycloud_Darwin_x86_64/
 export LESSCHARSET=utf-8
@@ -141,6 +143,57 @@ function peco-src() {
   zle -R -c
 }
 zle -N peco-src
+
+# peco_server
+function peco_server {
+  readonly SSH_NAME="ozawa_shuhei"
+
+  service_00_01="$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/ | sed '$a===============TKY02===============\\n' )"
+  service_02="$( find ~/.fuku-tky02 -type d | sed -e '1d' | awk -F/ '{print $NF}' )"
+  service_merge=( "${service_00_01[@]}""${service_02[@]}" )
+
+  local service="$( echo -ne "${service_merge}" | peco )"
+
+  if echo ${service} | grep "tky02"; then
+    local host="$( cat ~/.fuku-tky02/${service}/index.html | peco )"
+  else
+    local host="$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/$service/ | peco )"
+  fi
+
+  if [ ! -z "$host" ] ; then
+    COUNT=`echo $host | wc -l`
+
+    if [ "$COUNT" -eq 1  ]; then
+      BUFFER="ssh `echo $host | awk '{print $1}'`"
+      #BUFFER="sshrc `echo $host | awk '{print $1}'`"
+    else
+      echo $host | awk '{print $1}' | tr '\n' ' ' > ~/serverlist
+      BUFFER="tmux-cssh `echo $host | awk '{print $1}' | tr '\n' ' '`"
+    fi
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco_server
+bindkey '^[' peco_server
+
+function _ssh {
+  # local and tky02 #
+  compadd `find ~/.fuku-tky02 -type f -name "*.html" | xargs -I{} cat {} | awk '{print $1}' | sort`
+  compadd `cat ~/.ssh/config | grep -w Host | awk '{print $2}'`
+  compadd `find ~/.ssh/config.d -type f | xargs -I{} cat {} | grep -w Host | awk '{print $2}'`
+
+  # tky00 and tky01 #
+  services_0001=$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/ )
+  array_services_0001=( $( echo ${services_0001}) )
+  array_servers=()
+  for service in "${array_services_0001[@]}"
+  do
+    array_servers+=( $( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/${service}/ | awk '{print $1}' ) )
+  done
+
+  compadd ${array_servers}
+}
 
 # vscode
 function code {

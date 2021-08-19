@@ -12,6 +12,9 @@ brew install coreutils
 brew install git
 brew install git-flow
 
+#jump
+brew install jump
+
 # node.js
 brew install node.js
 brew install yarn

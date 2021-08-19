@@ -20,6 +20,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 eval "$(rbenv init -)"
 eval "$(anyenv init -)"
 eval "$(direnv hook zsh)"
+eval "$(jump shell --bind=z)"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000

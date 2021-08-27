@@ -72,6 +72,23 @@ brew install aylei/tap/kubectl-debug
 brew install helm
 brew install istioctl
 
+## mysql client
+brew install mycli
+
+## modern watch command
+#brew install sachaos/tap/viddy
+go install github.com/sachaos/viddy@latest
+
+## tail AWS CloudWatch Logs
+#brew tap knqyf263/utern
+#brew install knqyf263/utern/utern
+git clone https://github.com/knqyf263/utern.git
+cd utern
+go install
+
+## Ansible
+brew install ansible
+
 ## eksctl
 brew tap weaveworks/tap
 brew install weaveworks/tap/eksctl

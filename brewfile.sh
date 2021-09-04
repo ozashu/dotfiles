@@ -30,6 +30,10 @@ brew install tree
 brew install emap
 brew install sipcalc
 brew install sysbench
+brew install sqldef/sqldef/mysqldef
+
+# Linux virtual machines on macOS
+brew install lima
 
 ## anyenv
 brew install anyenv

@@ -145,57 +145,6 @@ function peco-src() {
 }
 zle -N peco-src
 
-# peco_server
-function peco_server {
-  readonly SSH_NAME="ozawa_shuhei"
-
-  service_00_01="$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/ | sed '$a===============TKY02===============\\n' )"
-  service_02="$( find ~/.fuku-tky02 -type d | sed -e '1d' | awk -F/ '{print $NF}' )"
-  service_merge=( "${service_00_01[@]}""${service_02[@]}" )
-
-  local service="$( echo -ne "${service_merge}" | peco )"
-
-  if echo ${service} | grep "tky02"; then
-    local host="$( cat ~/.fuku-tky02/${service}/index.html | peco )"
-  else
-    local host="$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/$service/ | peco )"
-  fi
-
-  if [ ! -z "$host" ] ; then
-    COUNT=`echo $host | wc -l`
-
-    if [ "$COUNT" -eq 1  ]; then
-      BUFFER="ssh `echo $host | awk '{print $1}'`"
-      #BUFFER="sshrc `echo $host | awk '{print $1}'`"
-    else
-      echo $host | awk '{print $1}' | tr '\n' ' ' > ~/serverlist
-      BUFFER="tmux-cssh `echo $host | awk '{print $1}' | tr '\n' ' '`"
-    fi
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N peco_server
-bindkey '^[' peco_server
-
-function _ssh {
-  # local and tky02 #
-  compadd `find ~/.fuku-tky02 -type f -name "*.html" | xargs -I{} cat {} | awk '{print $1}' | sort`
-  compadd `cat ~/.ssh/config | grep -w Host | awk '{print $2}'`
-  compadd `find ~/.ssh/config.d -type f | xargs -I{} cat {} | grep -w Host | awk '{print $2}'`
-
-  # tky00 and tky01 #
-  services_0001=$( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/ )
-  array_services_0001=( $( echo ${services_0001}) )
-  array_servers=()
-  for service in "${array_services_0001[@]}"
-  do
-    array_servers+=( $( curl -sS http://mist.amb-shared.incvb.io/mist/server-list/${service}/ | awk '{print $1}' ) )
-  done
-
-  compadd ${array_servers}
-}
-
 # vscode
 function code {
     if [[ $# = 0 ]]
@@ -253,14 +202,15 @@ compdef gx-complete gx
 source ~/.bash_profile
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
-PATH="/Users/s04503/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/s04503/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/s04503/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/s04503/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/s04503/perl5"; export PERL_MM_OPT;
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc'; fi
+# CA用
+#PATH="/Users/s04503/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/Users/s04503/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/Users/s04503/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/Users/s04503/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/Users/s04503/perl5"; export PERL_MM_OPT;
+#
+## The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/path.zsh.inc'; fi
+#
+## The next line enables shell command completion for gcloud.
+#if [ -f '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04503/CAWORK/google-cloud-sdk/completion.zsh.inc'; fi

@@ -11,5 +11,5 @@ if [[ "$(uname -s)" != Darwin ]]; then
   exit 1
 fi
 
-install_common_packages
+install_brew_packages
 brew bundle --file="$DOTFILES_DIR/Brewfile.macos"

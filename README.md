@@ -17,10 +17,11 @@ Install packages as well:
 ./setup.sh --packages
 ```
 
-Package installation uses `Brewfile` on both platforms,
-`Brewfile.macos` for macOS-only applications, and
-`packages/ubuntu.txt` for the Ubuntu prerequisites. Homebrew must already be
-installed; the setup deliberately does not execute a remote installer.
+On macOS, package installation uses `Brewfile` and `Brewfile.macos`, and
+Homebrew must already be installed. On Ubuntu, packages are installed with
+`apt-get` from `packages/ubuntu.txt`; Homebrew is not required. Tools in the
+Brewfiles that are unavailable from the Ubuntu package repositories are not
+installed on Ubuntu.
 
 Shell settings are split into `zsh/common.zsh`, `zsh/macos.zsh`, and
 `zsh/ubuntu.zsh`. Machine- or company-specific settings can be placed in

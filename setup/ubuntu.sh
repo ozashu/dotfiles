@@ -25,4 +25,4 @@ if ! locale -a | grep -Eiq '^ja_JP\.utf-?8$'; then
   sudo locale-gen ja_JP.UTF-8
 fi
 
-install_common_packages
+install_vim_plugins

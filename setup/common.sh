@@ -9,12 +9,12 @@ install_homebrew() {
     return
   fi
 
-  printf 'Homebrew is required for the shared CLI packages.\n' >&2
+  printf 'Homebrew is required for the macOS packages.\n' >&2
   printf 'Install it from https://brew.sh and rerun this script.\n' >&2
   exit 1
 }
 
-install_common_packages() {
+install_brew_packages() {
   install_homebrew
   brew update
   brew bundle --file="$DOTFILES_DIR/Brewfile"

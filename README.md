@@ -28,7 +28,8 @@ Herdrの設定は`~/.config/herdr`へリンクされます。初回セットア�
 HerdrはmacOSではHomebrew、Ubuntuでは公式インストーラーを使って
 `~/.local/bin/herdr`へ導入します。既存のHerdrがある場合、Ubuntuのセットアップは
 上書きしません。直接インストール版の更新は`herdr update`、Homebrew版は
-`brew upgrade herdr`を使用してください。
+`brew upgrade herdr`を使用してください。HerdrとCopilot CLIが利用可能な場合は、
+両者のセッション連携も未導入時に自動でインストールします。
 
 シェル設定は`zsh/common.zsh`、`zsh/macos.zsh`、`zsh/ubuntu.zsh`に分かれています。
 端末や会社固有の設定は、Git管理外の`~/.zshrc.local`と
@@ -148,8 +149,8 @@ npx skills add herdrdev/herdr --skill herdr -g
 ```
 
 skillは`HERDR_ENV=1`のときだけHerdrを操作する安全策を含みます。プロジェクト単位で
-導入する場合は`-g`を外してください。GitHub Copilot CLIを使う場合は、セッションを
-復元できるよう公式integrationも導入します。
+導入する場合は`-g`を外してください。GitHub Copilot CLI用の公式integrationは
+`setup.sh`が自動で導入します。手動で導入または状態確認する場合は次を実行します。
 
 ```sh
 herdr integration install copilot

@@ -53,6 +53,32 @@ backup_and_link() {
   printf 'Linked: %s -> %s\n' "$target_path" "$source_path"
 }
 
+install_herdr_copilot_integration() {
+  local herdr_command
+
+  if ! command -v copilot >/dev/null 2>&1; then
+    printf 'Skipped Herdr Copilot integration: Copilot CLI is not installed.\n'
+    return
+  fi
+
+  if command -v herdr >/dev/null 2>&1; then
+    herdr_command="$(command -v herdr)"
+  elif [[ -x "$HOME/.local/bin/herdr" ]]; then
+    herdr_command="$HOME/.local/bin/herdr"
+  else
+    printf 'Skipped Herdr Copilot integration: Herdr is not installed.\n'
+    return
+  fi
+
+  if "$herdr_command" integration status |
+    grep -q '^copilot: current'; then
+    printf 'Herdr Copilot integration is already installed.\n'
+    return
+  fi
+
+  "$herdr_command" integration install copilot
+}
+
 for path in .zshrc .tmux.conf .gitconfig; do
   backup_and_link "$DOTFILES_DIR/$path" "$HOME/$path"
 done
@@ -85,6 +111,8 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
       ;;
   esac
 fi
+
+install_herdr_copilot_integration
 
 if command -v zsh >/dev/null 2>&1; then
   zsh_path="$(command -v zsh)"

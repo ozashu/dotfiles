@@ -5,3 +5,6 @@ nvim/lazy-lock.json
 *.swo
 tags
 installer.sh
+herdr/.plugins.lock
+herdr/*.log
+herdr/session.json

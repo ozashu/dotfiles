@@ -25,5 +25,6 @@ if ! locale -a | grep -Eiq '^ja_JP\.utf-?8$'; then
   sudo locale-gen ja_JP.UTF-8
 fi
 
+install_herdr_ubuntu
 install_neovim_ubuntu
 install_neovim_plugins

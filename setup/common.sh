@@ -20,6 +20,24 @@ install_brew_packages() {
   brew bundle --file="$DOTFILES_DIR/Brewfile"
 }
 
+install_herdr_ubuntu() (
+  local installer
+  local temporary_dir
+
+  if command -v herdr >/dev/null 2>&1; then
+    return
+  fi
+
+  temporary_dir="$(mktemp -d)"
+  trap 'rm -rf -- "$temporary_dir"' EXIT
+  installer="$temporary_dir/install-herdr.sh"
+
+  curl --fail --location --show-error \
+    https://herdr.dev/install.sh \
+    --output "$installer"
+  sh "$installer"
+)
+
 install_neovim_ubuntu() (
   local architecture
   local archive

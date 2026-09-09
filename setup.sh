@@ -59,6 +59,7 @@ done
 
 mkdir -p "$HOME/.config"
 backup_and_link "$DOTFILES_DIR/.tmux" "$HOME/.tmux"
+backup_and_link "$DOTFILES_DIR/herdr" "$HOME/.config/herdr"
 backup_and_link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 if [[ "$INSTALL_PACKAGES" == true ]]; then

@@ -1,4 +1,4 @@
-DOTFILES_DIR="${0:A:h}"
+DOTFILES_DIR="${${(%):-%N}:A:h}"
 
 case "$OSTYPE" in
   darwin*)

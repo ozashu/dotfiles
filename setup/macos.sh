@@ -13,3 +13,4 @@ fi
 
 install_brew_packages
 brew bundle --file="$DOTFILES_DIR/Brewfile.macos"
+install_neovim_plugins

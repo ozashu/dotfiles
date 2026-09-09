@@ -2,7 +2,7 @@
 	name = ozashu
 	email = bm0801667@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 	pager = less -FRX
 	quotepath = false
 [init]
@@ -10,7 +10,7 @@
 [color]
 	ui = auto
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 	colorMoved = default
 [difftool]
 	prompt = false

@@ -53,12 +53,13 @@ backup_and_link() {
   printf 'Linked: %s -> %s\n' "$target_path" "$source_path"
 }
 
-for path in .zshrc .vimrc .tmux.conf .gitconfig; do
+for path in .zshrc .tmux.conf .gitconfig; do
   backup_and_link "$DOTFILES_DIR/$path" "$HOME/$path"
 done
 
 mkdir -p "$HOME/.config"
 backup_and_link "$DOTFILES_DIR/.tmux" "$HOME/.tmux"
+backup_and_link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 if [[ "$INSTALL_PACKAGES" == true ]]; then
   case "$(uname -s)" in

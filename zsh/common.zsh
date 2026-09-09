@@ -66,7 +66,20 @@ function update-vcs-info() {
 }
 add-zsh-hook precmd update-vcs-info
 
-PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%~%f%b %F{red}${vcs_info_msg_0_}%f] '
+typeset -g kubernetes_context_prompt=''
+function update-kubernetes-context() {
+  kubernetes_context_prompt=''
+  (( $+commands[kubectl] )) || return
+
+  local context
+  context="$(kubectl config current-context 2>/dev/null)" || return
+  [[ -n "$context" ]] || return
+  context="${context//\%/%%}"
+  kubernetes_context_prompt=" %F{cyan}k8s:${context}%f"
+}
+add-zsh-hook precmd update-kubernetes-context
+
+PROMPT='[%*][%F{magenta}%n%f@%F{green}%U%m%u%f:%F{blue}%B%~%f%b %F{red}${vcs_info_msg_0_}%f${kubernetes_context_prompt}] '
 PROMPT2='%F{yellow}%_ > %f'
 SPROMPT='%F{red}correct: %R -> %r ? [n,y,a,e]%f '
 

@@ -1,47 +1,46 @@
 [user]
-    name = Ozawa Shuhei
-    email = ozawa_shuhei@cyberagent.co.jp
+	name = ozashu
+	email = bm0801667@gmail.com
 [core]
-    editor = vim
-    pager = less --RAW-CONTROL-CHARS --quit-if-one-screen
-    quotepath = false
+	editor = vim
+	pager = less -FRX
+	quotepath = false
+[init]
+	defaultBranch = main
 [color]
-    ui = true
-    interactive = auto
-[color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
+	ui = auto
 [diff]
-    tool = vimdiff
+	tool = vimdiff
+	colorMoved = default
 [difftool]
-    prompt = false
-[branch "master"]
-    rebase = true
+	prompt = false
 [branch]
-    autosetuprebase = always
+	sort = -committerdate
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+	updateRefs = true
+[fetch]
+	prune = true
+	pruneTags = true
+[push]
+	autoSetupRemote = true
+	default = simple
+[rerere]
+	enabled = true
+	autoupdate = true
 [alias]
-    co = checkout
-    st = status
-    br = branch
-    ci = commit
-    reh = reset --hard
-    reho = reset --hard remotes/origin/HEAD
-    l  =  log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-    lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-[url "git@ghe.ca-tools.org:"]
-    insteadOf = https://ghe.ca-tools.org/
+	co = checkout
+	sw = switch
+	st = status --short --branch
+	br = branch
+	ci = commit
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [diff "sopsdiffer"]
 	textconv = sops -d
 [ghq]
-	root = $GOPATH/src
+	root = ~/src
+[include]
+	path = ~/.gitconfig.local

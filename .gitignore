@@ -1,1 +1,6 @@
 .vim/
+.DS_Store
+*.swp
+*.swo
+tags
+installer.sh

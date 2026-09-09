@@ -1,0 +1,10 @@
+build-essential
+ca-certificates
+curl
+file
+git
+locales
+procps
+unzip
+wl-clipboard
+xclip

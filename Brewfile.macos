@@ -1,0 +1,9 @@
+brew "lima"
+
+cask "adobe-acrobat-reader"
+cask "font-hackgen"
+cask "gcloud-cli"
+cask "skype"
+cask "vagrant"
+cask "virtualbox"
+cask "xquartz"

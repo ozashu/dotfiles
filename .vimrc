@@ -13,23 +13,15 @@ endif
 "+---------------+
 
 " dein.vimに関するディレクトリ
-let s:dein_dir = expand('~/.vim/.cache/dein')
+let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-    let s:rc_dir = expand('~/dotfiles')
+let s:rc_dir = fnamemodify(resolve(expand('~/.vimrc')), ':h')
 
-if has('vim_starting')
-    " 起動にかかる読み込み時のみ以下を実行
-    if &runtimepath !~# '/dein.vim'
-        if !isdirectory(s:dein_repo_dir)
-            " dein.vimがcloneされていない場合はcloneする
-            execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
-        endif
-        " runtimepathの先頭にdein.vimを追加
-        execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-    endif
+if has('vim_starting') && isdirectory(s:dein_repo_dir)
+    execute 'set runtimepath^=' . fnameescape(fnamemodify(s:dein_repo_dir, ':p'))
 endif
 
-if dein#load_state(s:dein_dir)
+if exists('*dein#load_state') && dein#load_state(s:dein_dir)
     " キャッシュされたdeinの状態を読み込めなかった場合だけ以下を実行
     call dein#begin(s:dein_dir)
     " 必ず読み込むプラグインのリスト
@@ -41,9 +33,10 @@ if dein#load_state(s:dein_dir)
     call dein#save_state()
 endif
 
-if dein#check_install()
-    " インストールされていないパッケージがある場合にはインストールを行う
-    call dein#install()
+if !isdirectory(s:dein_repo_dir)
+    echohl WarningMsg
+    echom 'dein.vim is not installed; run ./setup.sh --packages'
+    echohl None
 endif
 
 "+----------------------+
@@ -81,16 +74,20 @@ set smartcase " 検索パターンに大文字を含んでいたら大文字小�
 set laststatus=2
 " 常にコマンドを表示
 set showcmd
-" \+pでPasteモードと切り替え
-set pastetoggle=<leader>p
 " Insertモード中に<BS>で直前の文字を消せるように
 set backspace=indent,eol,start
 " マーカーで折り畳む
 set foldmethod=marker
 " 常にコマンドを表示
 set showcmd
-" ヤンクをクリップボードに保持
-set clipboard+=unnamed
+" ヤンクをシステムクリップボードに保持
+if has('clipboard')
+    if has('mac')
+        set clipboard+=unnamed
+    else
+        set clipboard+=unnamedplus
+    endif
+endif
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
@@ -124,9 +121,6 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " 折り畳んだ箇所を行番号と同じ色にする
 highlight Folded ctermfg=130 ctermbg=0
-
-" enable 256 colors
-set t_Co=256
 
 "+----------------+
 "| Other settings |
@@ -188,7 +182,7 @@ augroup END
 
 " Renameで現在開いているファイルのファイル名を変更可能にする
 "     original by ujihisa (http://vim-jp.org/vim-users-jp/2009/05/27/Hack-17.html)
-command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
+command! -nargs=1 -complete=file Rename execute 'saveas ' . fnameescape(<q-args>) | call delete(expand('#'))
 
 "+--------------------+
 "| File type settings |
@@ -203,9 +197,6 @@ augroup FileTypeVimrcCommands
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    " Esc2回でUniteウィンドウを閉じる
-    autocmd FileType unite nnoremap <buffer> <silent> <ESC><ESC> :q<CR>
-    autocmd FileType unite inoremap <buffer> <silent> <ESC><ESC> <ESC>:q<CR>
     " Goでは行の折り返しだけを可視化
     autocmd FileType go setlocal nolist
     autocmd FileType go setlocal listchars=extends:<

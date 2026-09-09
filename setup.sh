@@ -1,67 +1,95 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-DOT_FILES=(.zshrc .vim .vimrc .tmux .tmux.conf .gitconfig .gemrc dein_lazy.toml dein.toml)
-RCFILE=(.${SHELL}rc)
+set -euo pipefail
 
-for file in ${DOT_FILES[@]}
-do
-ln -s $HOME/dotfiles/$file $HOME/$file
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+INSTALL_PACKAGES=false
+
+usage() {
+  cat <<'EOF'
+Usage: ./setup.sh [--packages]
+
+Create dotfile links for the current user. Pass --packages to also install
+packages for the detected operating system.
+EOF
+}
+
+while (($#)); do
+  case "$1" in
+    --packages)
+      INSTALL_PACKAGES=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      printf 'Unknown option: %s\n' "$1" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+  shift
 done
 
-if [ ! -d ~/dotfiles/.vim/.cache/dein/ ]; then
-    mkdir -p ~/dotfiles/.vim
-    mkdir -p ~/dotfiles/.vim/.cache/dein/
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-    sh ./installer.sh ~/.vim/.cache/dein/
-    rm -rf ./installer.sh
+backup_and_link() {
+  local source_path="$1"
+  local target_path="$2"
+  local backup_path
+
+  if [[ -L "$target_path" ]] &&
+    [[ "$(readlink "$target_path")" == "$source_path" ]]; then
+    printf 'Already linked: %s\n' "$target_path"
+    return
+  fi
+
+  if [[ -e "$target_path" || -L "$target_path" ]]; then
+    backup_path="${target_path}.backup.$(date +%Y%m%d%H%M%S)"
+    mv -- "$target_path" "$backup_path"
+    printf 'Backed up: %s -> %s\n' "$target_path" "$backup_path"
+  fi
+
+  ln -s -- "$source_path" "$target_path"
+  printf 'Linked: %s -> %s\n' "$target_path" "$source_path"
+}
+
+for path in .zshrc .vimrc .tmux.conf .gitconfig; do
+  backup_and_link "$DOTFILES_DIR/$path" "$HOME/$path"
+done
+
+mkdir -p "$HOME/.config"
+backup_and_link "$DOTFILES_DIR/.tmux" "$HOME/.tmux"
+
+if [[ "$INSTALL_PACKAGES" == true ]]; then
+  case "$(uname -s)" in
+    Darwin)
+      "$DOTFILES_DIR/setup/macos.sh"
+      ;;
+    Linux)
+      if [[ -r /etc/os-release ]]; then
+        # shellcheck disable=SC1091
+        . /etc/os-release
+      fi
+      if [[ "${ID:-}" != ubuntu && "${ID_LIKE:-}" != *ubuntu* ]]; then
+        printf 'Package installation supports Ubuntu only (detected: %s).\n' \
+          "${ID:-unknown}" >&2
+        exit 1
+      fi
+      "$DOTFILES_DIR/setup/ubuntu.sh"
+      ;;
+    *)
+      printf 'Unsupported operating system: %s\n' "$(uname -s)" >&2
+      exit 1
+      ;;
+  esac
 fi
 
-mkdir -p $HOME/go
-
-if [ ! -d ~/.rbenv/ ]; then
-    mkdir -p ~/.rbenv/
-    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+if command -v zsh >/dev/null 2>&1; then
+  zsh_path="$(command -v zsh)"
+  current_shell="$(readlink -f "${SHELL:-/bin/sh}")"
+  if [[ "$current_shell" != "$(readlink -f "$zsh_path")" ]]; then
+    printf 'To use zsh by default, run: chsh -s %q\n' "$zsh_path"
+  fi
 fi
 
-if [ ! -d ~/.config/anyenv/ ]; then
-    anyenv install --init
-    anyenv install nodenv
-    mkdir -p $(anyenv root)/plugins
-    git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-    mkdir -p "$(nodenv root)"/plugins
-    git clone https://github.com/nodenv/nodenv-default-packages.git "$(nodenv root)/plugins/nodenv-default-packages"
-    touch $(nodenv root)/default-packages
-    echo yarn >> $(nodenv root)/default-packages
-    echo typescript >> $(nodenv root)/default-packages
-    echo ts-node >> $(nodenv root)/default-packages
-    echo typesync >> $(nodenv root)/default-packages
-fi
-
-if [ ! -d ~/dotfiles/.tmux ]; then
-    mkdir -p ~/dotfiles/.tmux
-    cd ~/dotfiles/.tmux
-    wget https://raw.githubusercontent.com/jonmosco/kube-tmux/master/kube.tmux
-fi
-
-
-if [ ! -d $HOME/.cargo/bin ]; then
-    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-fi
-
-
-if [ ! -d /opt/homebrew ]; then
-    mkdir /opt/homebrew
-fi
-
-if [ ! -e /usr/local/bin/telepresence ]; then
-    sudo curl -fL https://app.getambassador.io/download/tel2/darwin/amd64/latest/telepresence -o /usr/local/bin/telepresence
-    sudo chmod a+x /usr/local/bin/telepresence
-fi
-
-curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
-#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-chsh -s $(which zsh)
-
-echo "Finished!"
+printf 'Dotfiles setup finished.\n'

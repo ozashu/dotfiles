@@ -3,4 +3,4 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-exec "$DOTFILES_DIR/setup/macos.sh"
+exec "$DOTFILES_DIR/setup/ubuntu.sh"
